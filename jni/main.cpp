@@ -36,8 +36,8 @@
 #include "minecraftpe/world/entity/Entity.h"
 
 
-std::string (*getGameVersionString_Real)(void);
-std::string getGameVersionString_Hook(void)
+static std::string (*getGameVersionString_Real)(void);
+static std::string getGameVersionString_Hook(void)
 {
 
 	return "Twilight Forest is Load";
@@ -86,15 +86,15 @@ static std::unique_ptr<ChunkSource> createGenerator_Hook(Dimension* self,Generat
 
 
 
-void (*initBlocks_Real)();
-void initBlocks_Hook() {
+static void (*initBlocks_Real)();
+static void initBlocks_Hook() {
 	initBlocks_Real();
 
 	TwilightBlocks::initBlocks();
 }
 
-void (*initItems_Real)(void);
-void initItems_Hook(void)
+static void (*initItems_Real)(void);
+static void initItems_Hook(void)
 {
        Item::mItems[720] = new IronWoodIngot("ironwood_ingot",720 - 0x100);
        Item::mItems[721] = new ArcticFur("arctic_fur",721 - 0x100);
@@ -102,14 +102,13 @@ void initItems_Hook(void)
        initItems_Real();
     
 }
-void (*initCreativeItems_Real)();
-void initCreativeItems_Hook() {
-	initCreativeItems_Real();
-
-    CreativeManager::registerCreativeItems();
-    Item::addCreativeItem(720,0);
-    Item::addCreativeItem(721,0);
-    Item::addCreativeItem(722,0);
+static void (*initCreativeItems_Real)();
+static void initCreativeItems_Hook() {
+       initCreativeItems_Real();
+       CreativeManager::registerCreativeItems();
+       Item::addCreativeItem(720,0);
+       Item::addCreativeItem(721,0);
+       Item::addCreativeItem(722,0);
 }
 
 
@@ -125,7 +124,7 @@ static std::string I18n_Hook(std::string const& key, std::vector<std::string, st
 	else if(key == "tile.mangrovewood.name") return "MangroveWood";
 	else if(key == "tile.sortingwood.name") return "SortingWood";
 	else if(key == "tile.minewood.name") return "MineWood";
-    else if(key == "tile.transwood.name") return "TransWood";
+        else if(key == "tile.transwood.name") return "TransWood";
 	else if(key == "tile.timewood.name") return "TimeWood";
 	
 
@@ -140,7 +139,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*) &Block::initBlocks, (void*) &initBlocks_Hook, (void**) &initBlocks_Real);
 	MSHookFunction((void*) &Item::initItems,(void*)&initItems_Hook,(void**)&initItems_Real);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &initCreativeItems_Hook, (void**) &initCreativeItems_Real);
-    MSHookFunction((void*) &I18n::get, (void*) &I18n_Hook, (void**) &I18n_Real);
+        MSHookFunction((void*) &I18n::get, (void*) &I18n_Hook, (void**) &I18n_Real);
 	MSHookFunction((void*) &Biome::initBiomes, (void*) &initBiomes_Hook, (void**) &initBiomes_Real);
 	MSHookFunction((void*) &Dimension::createNew, (void*) &createNewDimension_Hook, (void**) &createNewDimension_Real);
 	MSHookFunction((void*) &Dimension::_createGenerator, (void*) &createGenerator_Hook, (void**) &createGenerator_Real);
