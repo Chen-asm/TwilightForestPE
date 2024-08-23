@@ -126,6 +126,8 @@ static std::string I18n_Hook(std::string const& key, std::vector<std::string, st
 	else if(key == "tile.minewood.name") return "MineWood";
         else if(key == "tile.transwood.name") return "TransWood";
 	else if(key == "tile.timewood.name") return "TimeWood";
+	else if(key == "tile.ironwoodblock.name") return "IronWoodBlock";
+	else if(key == "tile.steelleafblock.name") return "SteelLeafBlock";
 	
 
 	//TODO...
