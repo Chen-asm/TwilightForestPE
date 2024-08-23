@@ -16,6 +16,8 @@
 #include "CarminiteBlock.h"
 #include "ArcticFurBlock.h" 
 #include "TerrorcottaDiagonalBlock.h"
+#include "TerrorcottaCircularBlock.h"
+#include "OakPlanks.h"
 
 
 Block* TwilightBlocks::canopyWood;
@@ -32,6 +34,8 @@ Block* TwilightBlocks::fieryMetalBlock;
 Block* TwilightBlocks::carminiteBlock;
 Block* TwilightBlocks::arcticFurBlock;
 Block* TwilightBlocks::terrorcottaDiagonalBlock;
+Block* TwilightBlocks::terrorcottaCircularBlock;
+Block* TwilightBlocks::oakPlanks;
 
 
 void TwilightBlocks::initBlocks() {
@@ -51,6 +55,8 @@ void TwilightBlocks::initBlocks() {
 	carminiteBlock = new CarminiteBlock("carminiteblock",213,Material::getMaterial(MaterialType::IRON));
 	arcticFurBlock = new ArcticFurBlock("arcticfurblock",214,Material::getMaterial(MaterialType::DECORATION));
 	terrorcottaDiagonalBlock = new TerrorcottaDiagonalBlock("terrorcottadiagonalblock",215,Material::getMaterial(MaterialType::DECORATION));
+	terrorcottaCircularBlock = new TerrorcottaCircularBlock("terrorcottacircularblock",216,Material::getMaterial(MaterialType::DECORATION));
+	oakPlanks = new OakPlanks("oakplanks",217);
 	registerBlocks();
 }
 
@@ -70,6 +76,8 @@ void TwilightBlocks::registerBlocks() {
 	registerBlock(carminiteBlock);
 	registerBlock(arcticFurBlock);
 	registerBlock(terrorcottaDiagonalBlock);
+	registerBlock(terrorcottaCircularBlock);
+	registerBlock(oakPlanks);
 
 }
 void TwilightBlocks::registerBlock(Block* block) {

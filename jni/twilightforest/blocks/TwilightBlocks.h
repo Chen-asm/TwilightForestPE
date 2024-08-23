@@ -20,6 +20,8 @@ class TwilightBlocks
     static Block* carminiteBlock;
     static Block* arcticFurBlock;
     static Block* terrorcottaDiagonalBlock;
+    static Block* terrorcottaCircularBlock;
+    static Block* oakPlanks;
     
 
 };

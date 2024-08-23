@@ -18,4 +18,6 @@ void CreativeManager::registerCreativeItems() {
 	Item::addCreativeItem(TwilightBlocks::carminiteBlock,0);
 	Item::addCreativeItem(TwilightBlocks::arcticFurBlock,0);
 	Item::addCreativeItem(TwilightBlocks::terrorcottaDiagonalBlock,0);
+	Item::addCreativeItem(TwilightBlocks::terrorcottaCircularBlock,0);
+	Item::addCreativeItem(TwilightBlocks::oakPlanks,0);
 }
