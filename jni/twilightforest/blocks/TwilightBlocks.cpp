@@ -10,6 +10,8 @@
 #include "MineWood.h"
 #include "TransWood.h"
 #include "TimeWood.h"
+#include "IronWoodBlock.h"
+#include "SteelLeafBlock.h"
 
 Block* TwilightBlocks::canopyWood;
 Block* TwilightBlocks::oakWood;
@@ -19,7 +21,8 @@ Block* TwilightBlocks::sortingWood;
 Block* TwilightBlocks::mineWood;
 Block* TwilightBlocks::transWood;
 Block* TwilightBlocks::timeWood;
-
+Block* TwilightBlocks::ironWoodBlock;
+Block* TwilightBlocks::steelLeafBlock;
 void TwilightBlocks::initBlocks() {
 
 	
@@ -31,6 +34,8 @@ void TwilightBlocks::initBlocks() {
 	mineWood = new MineWood("minewood",207);
 	transWood = new TransWood("transwood",208);
 	timeWood = new TimeWood("timewood",209);
+	ironWoodBlock = new IronWoodBlock("ironwoodblock",210);
+	steelLeafBlock = new SteelLeafBlock("steelleafblock",211,Material::getMaterial(MaterialType::PLANT));
 	registerBlocks();
 }
 
@@ -44,6 +49,8 @@ void TwilightBlocks::registerBlocks() {
 	registerBlock(mineWood);
 	registerBlock(transWood);
 	registerBlock(timeWood);
+	registerBlock(ironWoodBlock);
+	registerBlock(steelLeafBlock);
 
 }
 void TwilightBlocks::registerBlock(Block* block) {

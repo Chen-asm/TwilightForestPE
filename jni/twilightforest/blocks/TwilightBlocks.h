@@ -14,6 +14,8 @@ class TwilightBlocks
     static Block* mineWood;
     static Block* transWood;
     static Block* timeWood;
+    static Block* ironWoodBlock;
+    static Block* steelLeafBlock;
     
 
 };
