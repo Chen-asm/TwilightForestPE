@@ -12,6 +12,11 @@
 #include "TimeWood.h"
 #include "IronWoodBlock.h"
 #include "SteelLeafBlock.h"
+#include "FieryMetalBlock.h"
+#include "CarminiteBlock.h"
+#include "ArcticFurBlock.h" 
+#include "TerrorcottaDiagonalBlock.h"
+
 
 Block* TwilightBlocks::canopyWood;
 Block* TwilightBlocks::oakWood;
@@ -23,6 +28,12 @@ Block* TwilightBlocks::transWood;
 Block* TwilightBlocks::timeWood;
 Block* TwilightBlocks::ironWoodBlock;
 Block* TwilightBlocks::steelLeafBlock;
+Block* TwilightBlocks::fieryMetalBlock;
+Block* TwilightBlocks::carminiteBlock;
+Block* TwilightBlocks::arcticFurBlock;
+Block* TwilightBlocks::terrorcottaDiagonalBlock;
+
+
 void TwilightBlocks::initBlocks() {
 
 	
@@ -36,6 +47,10 @@ void TwilightBlocks::initBlocks() {
 	timeWood = new TimeWood("timewood",209);
 	ironWoodBlock = new IronWoodBlock("ironwoodblock",210);
 	steelLeafBlock = new SteelLeafBlock("steelleafblock",211,Material::getMaterial(MaterialType::PLANT));
+	fieryMetalBlock = new FieryMetalBlock("fierymetalblock",212,Material::getMaterial(MaterialType::IRON));
+	carminiteBlock = new CarminiteBlock("carminiteblock",213,Material::getMaterial(MaterialType::IRON));
+	arcticFurBlock = new ArcticFurBlock("arcticfurblock",214,Material::getMaterial(MaterialType::DECORATION));
+	terrorcottaDiagonalBlock = new TerrorcottaDiagonalBlock("terrorcottadiagonalblock",215,Material::getMaterial(MaterialType::DECORATION));
 	registerBlocks();
 }
 
@@ -51,6 +66,10 @@ void TwilightBlocks::registerBlocks() {
 	registerBlock(timeWood);
 	registerBlock(ironWoodBlock);
 	registerBlock(steelLeafBlock);
+	registerBlock(fieryMetalBlock);
+	registerBlock(carminiteBlock);
+	registerBlock(arcticFurBlock);
+	registerBlock(terrorcottaDiagonalBlock);
 
 }
 void TwilightBlocks::registerBlock(Block* block) {

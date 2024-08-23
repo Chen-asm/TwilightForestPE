@@ -16,6 +16,10 @@ class TwilightBlocks
     static Block* timeWood;
     static Block* ironWoodBlock;
     static Block* steelLeafBlock;
+    static Block* fieryMetalBlock;
+    static Block* carminiteBlock;
+    static Block* arcticFurBlock;
+    static Block* terrorcottaDiagonalBlock;
     
 
 };
