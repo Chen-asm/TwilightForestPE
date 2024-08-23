@@ -14,4 +14,8 @@ void CreativeManager::registerCreativeItems() {
 	Item::addCreativeItem(TwilightBlocks::timeWood,0);
 	Item::addCreativeItem(TwilightBlocks::ironWoodBlock,0);
 	Item::addCreativeItem(TwilightBlocks::steelLeafBlock,0);
+	Item::addCreativeItem(TwilightBlocks::fieryMetalBlock,0);
+	Item::addCreativeItem(TwilightBlocks::carminiteBlock,0);
+	Item::addCreativeItem(TwilightBlocks::arcticFurBlock,0);
+	Item::addCreativeItem(TwilightBlocks::terrorcottaDiagonalBlock,0);
 }
