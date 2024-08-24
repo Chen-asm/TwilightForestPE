@@ -3,7 +3,8 @@
 #include "minecraftpe/world/level/dimension/NormalDimension.h"
 class TwilightForest : public Dimension
 {
-	public:
+    //It would be better if TwilightForest inherited NormalDimension...
+    public:
     TwilightForest(Level&);
     virtual void init();
     virtual void tick();
