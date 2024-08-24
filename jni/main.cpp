@@ -51,6 +51,7 @@ static void initBiomes_Hook(void)
 static std::unique_ptr<Dimension> (*createNewDimension_Real)(DimensionId,Level&);
 static std::unique_ptr<Dimension> createNewDimension_Hook(DimensionId dimensionId,Level& level)
 {
+	/*
 	if(dimensionId == DimensionId::NETHER)
 	{ //nether：there is a bug 
 		return std::unique_ptr<Dimension>(new TwilightForest(level));
@@ -59,29 +60,32 @@ static std::unique_ptr<Dimension> createNewDimension_Hook(DimensionId dimensionI
 	{
         return std::unique_ptr<Dimension>(new NormalDimension(level));
 	}
+	*/
 	//return createNewDimension_Real(dimensionId,level);
 }
-static std::unique_ptr<ChunkSource> (*createGenerator_Real)(Dimension*,GeneratorType);
-static std::unique_ptr<ChunkSource> createGenerator_Hook(Dimension* self,GeneratorType type)
+static std::unique_ptr<ChunkSource> (*createGenerator_Real)(GeneratorType);
+static std::unique_ptr<ChunkSource> createGenerator_Hook(GeneratorType type)
 {
+	/*
 	if(type == GeneratorType::HELL)
 	{//hell
-		return std::unique_ptr<ChunkSource>(new TwilightRandomLevelSource(&self->level, self, self->level.getSeed()));
+		return std::unique_ptr<ChunkSource>(new TwilightRandomLevelSource(this->level, this, this->level.getSeed()));
 	}
 	else if(type == GeneratorType::LEGACY)
 	{
-		return std::unique_ptr<ChunkSource>(new RandomLevelSource(&self->level, self, self->level.getSeed(), true));
-		//return std::unique_ptr<ChunkSource>(new HellRandomLevelSource(&self->level,self,self->level.getSeed()));
+		return std::unique_ptr<ChunkSource>(new RandomLevelSource(this->level, this, this->level.getSeed(), true));
+		
 	}
 	else if(type == GeneratorType::INFINITE)
 	{
-		return std::unique_ptr<ChunkSource>(new RandomLevelSource(&self->level, self, self->level.getSeed(), false));
+		return std::unique_ptr<ChunkSource>(new RandomLevelSource(this->level, this, this->level.getSeed(), false));
 	}
 	else if(type == GeneratorType::FLAT)
 	{//there is also a bug to load generator
-		return std::unique_ptr<ChunkSource>(new FlatLevelSource(&self->level, self, FlatLevelSource::DEFAULT_LAYERS));
+		return std::unique_ptr<ChunkSource>(new FlatLevelSource(this->level, this, FlatLevelSource::DEFAULT_LAYERS));
 	}
-	//return createGenerator_Real(self,type);
+	*/
+	//return createGenerator_Real(type);
 }
 
 
