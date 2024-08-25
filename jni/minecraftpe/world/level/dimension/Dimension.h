@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 //class Level;
+class FullBlock;
 class ChunkSource;
 class CompoundTag;
 class Packet;

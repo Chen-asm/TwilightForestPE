@@ -70,9 +70,9 @@ public:
 
 	static std::shared_ptr<TextureAtlas> mTerrainTextureAtlas;
 	static std::vector<Block*> mOwnedBlocks;
-	static Block* mBlocks[256];
+	static Block* mBlocks[1024];//256
 	static bool mSolid[256];
-	static float mTranslucency[256];
+	static float mTranslucency[1024];
 	static uint_fast8_t mLightBlock[256];
 	static int mLightEmission[256];
 	static bool mShouldTick[256];
