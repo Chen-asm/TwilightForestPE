@@ -19,15 +19,16 @@
 #include "minecraftpe/world/level/dimension/HellDimension.h"
 #include "minecraftpe/world/level/gen/RandomLevelSource.h"
 #include "minecraftpe/world/level/gen/FlatLevelSource.h"
-#include "minecraftpe/world/level/biome/Biome.h"
 #include "minecraftpe/world/level/gen/HellRandomLevelSource.h"
 #include "twilightforest/items/TwilightArcticFur.h"
 #include "twilightforest/items/TwilightFeather.h"
 #include "twilightforest/items/TwilightIronWoodIngot.h"
+#include "twilightforest/biomes/TwilightBiome.h"
 #include "twilightforest/dimension/TwilightForest.h"
 #include "minecraftpe/world/level/GeneratorType.h"
 #include "twilightforest/blocks/TwilightBlocks.h"
 #include "twilightforest/creative/CreativeManager.h"
+#include "twilightforest/level/chunk/TwilightRandomLevelSource.h"
 #include "minecraftpe/client/renderer/renderer/LevelRenderer.h"
 #include "minecraftpe/client/renderer/Tessellator.h"
 #include "minecraftpe/client/renderer/renderer/Mesh.h"
@@ -36,8 +37,8 @@
 #include "minecraftpe/world/entity/Entity.h"
 
 
-static std::string (*getGameVersionString_Real)(void);
-static std::string getGameVersionString_Hook(void)
+std::string (*getGameVersionString_Real)(void);
+std::string getGameVersionString_Hook(void)
 {
 
 	return "Twilight Forest is Load";
@@ -48,10 +49,9 @@ static void initBiomes_Hook(void)
 	initBiomes_Real();
 	
 }
-static std::unique_ptr<Dimension> (*createNewDimension_Real)(DimensionId,Level&);
-static std::unique_ptr<Dimension> createNewDimension_Hook(DimensionId dimensionId,Level& level)
+ std::unique_ptr<Dimension> (*createNewDimension_Real)(DimensionId,Level&);
+ std::unique_ptr<Dimension> createNewDimension_Hook(DimensionId dimensionId,Level& level)
 {
-	/*
 	if(dimensionId == DimensionId::NETHER)
 	{ //nether：there is a bug 
 		return std::unique_ptr<Dimension>(new TwilightForest(level));
@@ -60,45 +60,41 @@ static std::unique_ptr<Dimension> createNewDimension_Hook(DimensionId dimensionI
 	{
         return std::unique_ptr<Dimension>(new NormalDimension(level));
 	}
-	*/
 	//return createNewDimension_Real(dimensionId,level);
 }
-static std::unique_ptr<ChunkSource> (*createGenerator_Real)(GeneratorType);
-static std::unique_ptr<ChunkSource> createGenerator_Hook(GeneratorType type)
+static std::unique_ptr<ChunkSource> (*createGenerator_Real)(Dimension*,GeneratorType);
+static std::unique_ptr<ChunkSource> createGenerator_Hook(Dimension* self,GeneratorType type)
 {
-	/*
 	if(type == GeneratorType::HELL)
 	{//hell
-		return std::unique_ptr<ChunkSource>(new TwilightRandomLevelSource(this->level, this, this->level.getSeed()));
+		return std::unique_ptr<ChunkSource>(new TwilightRandomLevelSource(&self->level, self, self->level.getSeed()));
 	}
 	else if(type == GeneratorType::LEGACY)
 	{
-		return std::unique_ptr<ChunkSource>(new RandomLevelSource(this->level, this, this->level.getSeed(), true));
-		
+		return std::unique_ptr<ChunkSource>(new RandomLevelSource(&self->level, self, self->level.getSeed(), true));
+		//return std::unique_ptr<ChunkSource>(new HellRandomLevelSource(&self->level,self,self->level.getSeed()));
 	}
 	else if(type == GeneratorType::INFINITE)
 	{
-		return std::unique_ptr<ChunkSource>(new RandomLevelSource(this->level, this, this->level.getSeed(), false));
+		return std::unique_ptr<ChunkSource>(new RandomLevelSource(&self->level, self, self->level.getSeed(), false));
 	}
 	else if(type == GeneratorType::FLAT)
 	{//there is also a bug to load generator
-		return std::unique_ptr<ChunkSource>(new FlatLevelSource(this->level, this, FlatLevelSource::DEFAULT_LAYERS));
+		return std::unique_ptr<ChunkSource>(new FlatLevelSource(&self->level, self, FlatLevelSource::DEFAULT_LAYERS));
 	}
-	*/
-	//return createGenerator_Real(type);
+	//return createGenerator_Real(self,type);
 }
 
 
-
-static void (*initBlocks_Real)();
-static void initBlocks_Hook() {
+void (*initBlocks_Real)();
+void initBlocks_Hook() {
 	initBlocks_Real();
 
 	TwilightBlocks::initBlocks();
 }
 
-static void (*initItems_Real)(void);
-static void initItems_Hook(void)
+void (*initItems_Real)(void);
+void initItems_Hook(void)
 {
        Item::mItems[720] = new IronWoodIngot("ironwood_ingot",720 - 0x100);
        Item::mItems[721] = new ArcticFur("arctic_fur",721 - 0x100);
@@ -106,15 +102,15 @@ static void initItems_Hook(void)
        initItems_Real();
     
 }
-static void (*initCreativeItems_Real)();
-static void initCreativeItems_Hook() {
-       initCreativeItems_Real();
-       CreativeManager::registerCreativeItems();
-       Item::addCreativeItem(720,0);
-       Item::addCreativeItem(721,0);
-       Item::addCreativeItem(722,0);
-}
+void (*initCreativeItems_Real)();
+void initCreativeItems_Hook() {
+	initCreativeItems_Real();
 
+    CreativeManager::registerCreativeItems();
+    Item::addCreativeItem(720,0);
+    Item::addCreativeItem(721,0);
+    Item::addCreativeItem(722,0);
+}
 
 
 
@@ -128,7 +124,7 @@ static std::string I18n_Hook(std::string const& key, std::vector<std::string, st
 	else if(key == "tile.mangrovewood.name") return "MangroveWood";
 	else if(key == "tile.sortingwood.name") return "SortingWood";
 	else if(key == "tile.minewood.name") return "MineWood";
-        else if(key == "tile.transwood.name") return "TransWood";
+    else if(key == "tile.transwood.name") return "TransWood";
 	else if(key == "tile.timewood.name") return "TimeWood";
 	else if(key == "tile.ironwoodblock.name") return "IronWoodBlock";
 	else if(key == "tile.steelleafblock.name") return "SteelLeafBlock";
@@ -145,7 +141,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 	MSHookFunction((void*) &Block::initBlocks, (void*) &initBlocks_Hook, (void**) &initBlocks_Real);
 	MSHookFunction((void*) &Item::initItems,(void*)&initItems_Hook,(void**)&initItems_Real);
 	MSHookFunction((void*) &Item::initCreativeItems, (void*) &initCreativeItems_Hook, (void**) &initCreativeItems_Real);
-        MSHookFunction((void*) &I18n::get, (void*) &I18n_Hook, (void**) &I18n_Real);
+    MSHookFunction((void*) &I18n::get, (void*) &I18n_Hook, (void**) &I18n_Real);
 	MSHookFunction((void*) &Biome::initBiomes, (void*) &initBiomes_Hook, (void**) &initBiomes_Real);
 	MSHookFunction((void*) &Dimension::createNew, (void*) &createNewDimension_Hook, (void**) &createNewDimension_Real);
 	MSHookFunction((void*) &Dimension::_createGenerator, (void*) &createGenerator_Hook, (void**) &createGenerator_Real);
