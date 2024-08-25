@@ -1,15 +1,15 @@
-#include "OakPlanks.h"
-OakPlanks::OakPlanks(std::string const & name,int id):WoodBlock(name,id)
+#include "TimeWoodPlanks.h"
+TimeWoodPlanks::TimeWoodPlanks(std::string const & name,int id):WoodBlock(name,id)
 {
     this->creativeCategory = 1;
     this->setDestroyTime(5.0f);
     this->setSoundType(Block::SOUND_WOOD);
 
-    tex = getTextureUVCoordinateSet("planks_twilight_oak",0);
+    tex = getTextureUVCoordinateSet("planks_time",0);
 
 }
 
-const TextureUVCoordinateSet& OakPlanks::getTexture(signed char side)
+const TextureUVCoordinateSet& TimeWoodPlanks::getTexture(signed char side)
 {
    switch(side)
    {

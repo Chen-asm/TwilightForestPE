@@ -4,7 +4,6 @@ TransWood::TransWood(std::string const & name,int id):WoodBlock(name,id)
     this->creativeCategory = 1;
     this->setDestroyTime(5.0f);
     this->setSoundType(Block::SOUND_WOOD);
-    this->mSolid[208] = false;
     this->setLightEmission(1.0f);
     
 

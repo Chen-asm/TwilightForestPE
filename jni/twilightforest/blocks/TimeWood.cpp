@@ -4,7 +4,6 @@ TimeWood::TimeWood(std::string const & name,int id):WoodBlock(name,id)
     this->creativeCategory = 1;
     this->setDestroyTime(5.0f);
     this->setSoundType(Block::SOUND_WOOD);
-    this->mSolid[209] = false;
     this->setLightEmission(1.0f);
 
     top_tex = getTextureUVCoordinateSet("time_section",0);

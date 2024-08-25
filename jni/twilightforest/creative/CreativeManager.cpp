@@ -20,4 +20,11 @@ void CreativeManager::registerCreativeItems() {
 	Item::addCreativeItem(TwilightBlocks::terrorcottaDiagonalBlock,0);
 	Item::addCreativeItem(TwilightBlocks::terrorcottaCircularBlock,0);
 	Item::addCreativeItem(TwilightBlocks::oakPlanks,0);
+	Item::addCreativeItem(TwilightBlocks::canopyPlanks,0);
+	Item::addCreativeItem(TwilightBlocks::mangrovePlanks,0);
+	Item::addCreativeItem(TwilightBlocks::darkWoodPlanks,0);
+	Item::addCreativeItem(TwilightBlocks::timeWoodPlanks,0);
+	Item::addCreativeItem(TwilightBlocks::transWoodPlanks,0);
+	Item::addCreativeItem(TwilightBlocks::mineWoodPlanks,0);
+	Item::addCreativeItem(TwilightBlocks::sortingWoodPlanks,0);
 }

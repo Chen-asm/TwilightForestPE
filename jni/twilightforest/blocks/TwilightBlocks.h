@@ -22,6 +22,12 @@ class TwilightBlocks
     static Block* terrorcottaDiagonalBlock;
     static Block* terrorcottaCircularBlock;
     static Block* oakPlanks;
-    
+    static Block* canopyPlanks;
+    static Block* mangrovePlanks;
+    static Block* darkWoodPlanks;
+    static Block* timeWoodPlanks;
+    static Block* transWoodPlanks;
+    static Block* mineWoodPlanks;
+    static Block* sortingWoodPlanks;
 
 };
