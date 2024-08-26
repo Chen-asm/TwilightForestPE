@@ -29,5 +29,8 @@ class TwilightBlocks
     static Block* transWoodPlanks;
     static Block* mineWoodPlanks;
     static Block* sortingWoodPlanks;
+    static Block* rootsBlock;
+    static Block* liveRoots;
+    static Block* twilightOakLeaves;
 
 };

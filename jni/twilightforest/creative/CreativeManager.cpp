@@ -27,4 +27,7 @@ void CreativeManager::registerCreativeItems() {
 	Item::addCreativeItem(TwilightBlocks::transWoodPlanks,0);
 	Item::addCreativeItem(TwilightBlocks::mineWoodPlanks,0);
 	Item::addCreativeItem(TwilightBlocks::sortingWoodPlanks,0);
+	Item::addCreativeItem(TwilightBlocks::rootsBlock,0);
+	Item::addCreativeItem(TwilightBlocks::liveRoots,0);
+	Item::addCreativeItem(TwilightBlocks::twilightOakLeaves,0);
 }

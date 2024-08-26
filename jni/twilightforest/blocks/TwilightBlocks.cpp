@@ -25,6 +25,9 @@
 #include "TransWoodPlanks.h"
 #include "MineWoodPlanks.h"
 #include "SortingWoodPlanks.h"
+#include "RootsBlock.h"
+#include "LiveRoots.h"
+#include "TwilightOakLeaves.h"
 
 
 Block* TwilightBlocks::canopyWood;
@@ -50,32 +53,43 @@ Block* TwilightBlocks::timeWoodPlanks;
 Block* TwilightBlocks::transWoodPlanks;
 Block* TwilightBlocks::mineWoodPlanks;
 Block* TwilightBlocks::sortingWoodPlanks;
+Block* TwilightBlocks::rootsBlock;
+Block* TwilightBlocks::liveRoots;
+Block* TwilightBlocks::twilightOakLeaves;
+
+
+
+
+
 void TwilightBlocks::initBlocks() {
 
 	
-    canopyWood = new CanopyWood("canopywood",600);
-	oakWood = new OakWood("oakwood",601);
-    darkWood = new DarkWood("darkwood",602);
-    mangroveWood = new MangroveWood("mangrovewood",603);
-	sortingWood = new SortingWood("sortingwood",604);
-	mineWood = new MineWood("minewood",605);
-	transWood = new TransWood("transwood",606);
-	timeWood = new TimeWood("timewood",607);
-	ironWoodBlock = new IronWoodBlock("ironwoodblock",608);
-	steelLeafBlock = new SteelLeafBlock("steelleafblock",609,Material::getMaterial(MaterialType::PLANT));
-	fieryMetalBlock = new FieryMetalBlock("fierymetalblock",610,Material::getMaterial(MaterialType::IRON));
-	carminiteBlock = new CarminiteBlock("carminiteblock",611,Material::getMaterial(MaterialType::IRON));
-	arcticFurBlock = new ArcticFurBlock("arcticfurblock",612,Material::getMaterial(MaterialType::DECORATION));
-	terrorcottaDiagonalBlock = new TerrorcottaDiagonalBlock("terrorcottadiagonalblock",613,Material::getMaterial(MaterialType::DECORATION));
-	terrorcottaCircularBlock = new TerrorcottaCircularBlock("terrorcottacircularblock",614,Material::getMaterial(MaterialType::DECORATION));
-	oakPlanks = new OakPlanks("oakplanks",615);
-	canopyPlanks = new CanopyPlanks("canopyplanks",616);
-	mangrovePlanks = new MangrovePlanks("mangroveplanks",617);
-	darkWoodPlanks = new DarkWoodPlanks("darkwoodplanks",618);
-	timeWoodPlanks = new TimeWoodPlanks("timewoodplanks",619);
-	transWoodPlanks = new TransWoodPlanks("transwoodplanks",620);
-	mineWoodPlanks = new MineWoodPlanks("minewoodplanks",621);
-	sortingWoodPlanks = new SortingWoodPlanks("sortingwoodplanks",622);
+    canopyWood = new CanopyWood("canopywood",201);
+	oakWood = new OakWood("oakwood",202);
+    darkWood = new DarkWood("darkwood",203);
+    mangroveWood = new MangroveWood("mangrovewood",204);
+	sortingWood = new SortingWood("sortingwood",205);
+	mineWood = new MineWood("minewood",206);
+	transWood = new TransWood("transwood",207);
+	timeWood = new TimeWood("timewood",208);
+	ironWoodBlock = new IronWoodBlock("ironwoodblock",209);
+	steelLeafBlock = new SteelLeafBlock("steelleafblock",210,Material::getMaterial(MaterialType::PLANT));
+	fieryMetalBlock = new FieryMetalBlock("fierymetalblock",211,Material::getMaterial(MaterialType::IRON));
+	carminiteBlock = new CarminiteBlock("carminiteblock",212,Material::getMaterial(MaterialType::IRON));
+	arcticFurBlock = new ArcticFurBlock("arcticfurblock",213,Material::getMaterial(MaterialType::DECORATION));
+	terrorcottaDiagonalBlock = new TerrorcottaDiagonalBlock("terrorcottadiagonalblock",214,Material::getMaterial(MaterialType::DECORATION));
+	terrorcottaCircularBlock = new TerrorcottaCircularBlock("terrorcottacircularblock",215,Material::getMaterial(MaterialType::DECORATION));
+	oakPlanks = new OakPlanks("oakplanks",216);
+	canopyPlanks = new CanopyPlanks("canopyplanks",217);
+	mangrovePlanks = new MangrovePlanks("mangroveplanks",218);
+	darkWoodPlanks = new DarkWoodPlanks("darkwoodplanks",219);
+	timeWoodPlanks = new TimeWoodPlanks("timewoodplanks",220);
+	transWoodPlanks = new TransWoodPlanks("transwoodplanks",221);
+	mineWoodPlanks = new MineWoodPlanks("minewoodplanks",222);
+	sortingWoodPlanks = new SortingWoodPlanks("sortingwoodplanks",223);
+	rootsBlock = new RootsBlock("rootsblock",224,Material::getMaterial(MaterialType::PLANT));
+	liveRoots = new LiveRoots("liveroots",225,Material::getMaterial(MaterialType::PLANT));
+	twilightOakLeaves = new TwilightOakLeaves("twilightoakleaves",226,Material::getMaterial(MaterialType::PLANT));
 	registerBlocks();
 }
 
@@ -104,7 +118,9 @@ void TwilightBlocks::registerBlocks() {
 	registerBlock(transWoodPlanks);
 	registerBlock(mineWoodPlanks);
 	registerBlock(sortingWoodPlanks);
-
+	registerBlock(rootsBlock);
+	registerBlock(liveRoots);
+	registerBlock(twilightOakLeaves);
 }
 void TwilightBlocks::registerBlock(Block* block) {
 	block->init();
