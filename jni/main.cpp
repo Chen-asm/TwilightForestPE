@@ -52,6 +52,7 @@ static void initBiomes_Hook(void)
  std::unique_ptr<Dimension> (*createNewDimension_Real)(DimensionId,Level&);
  std::unique_ptr<Dimension> createNewDimension_Hook(DimensionId dimensionId,Level& level)
 {
+	
 	if(dimensionId == DimensionId::NETHER)
 	{ //nether：there is a bug 
 		return std::unique_ptr<Dimension>(new TwilightForest(level));
@@ -60,11 +61,13 @@ static void initBiomes_Hook(void)
 	{
         return std::unique_ptr<Dimension>(new NormalDimension(level));
 	}
+	
 	//return createNewDimension_Real(dimensionId,level);
 }
 static std::unique_ptr<ChunkSource> (*createGenerator_Real)(Dimension*,GeneratorType);
 static std::unique_ptr<ChunkSource> createGenerator_Hook(Dimension* self,GeneratorType type)
 {
+	
 	if(type == GeneratorType::HELL)
 	{//hell
 		return std::unique_ptr<ChunkSource>(new TwilightRandomLevelSource(&self->level, self, self->level.getSeed()));
@@ -82,6 +85,7 @@ static std::unique_ptr<ChunkSource> createGenerator_Hook(Dimension* self,Generat
 	{//there is also a bug to load generator
 		return std::unique_ptr<ChunkSource>(new FlatLevelSource(&self->level, self, FlatLevelSource::DEFAULT_LAYERS));
 	}
+	
 	//return createGenerator_Real(self,type);
 }
 
