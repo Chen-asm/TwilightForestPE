@@ -1,5 +1,5 @@
 #pragma once
-
+#include "../BlockPos.h"
 
 struct ChunkPos
 {
@@ -9,4 +9,5 @@ struct ChunkPos
 struct ChunkBlockPos
 {
 	int x, y, z;
+	ChunkBlockPos(BlockPos const&);
 };

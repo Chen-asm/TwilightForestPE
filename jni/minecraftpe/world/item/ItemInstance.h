@@ -21,6 +21,7 @@ public:
 	int getId() const;
 	bool useOn(Player*, int, int, int, signed char, float, float, float);
 	const ItemInstance& operator=(const ItemInstance&);
-	
+	const ItemInstance& operator!=(ItemInstance const&) const;
+	const bool operator==(ItemInstance const&) const;
 	bool isLiquidClipItem();
 };

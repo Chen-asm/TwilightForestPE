@@ -163,7 +163,7 @@ public:
 	virtual bool canSurvive(BlockSource&, const BlockPos&);
 	virtual int getExperienceDrop(Random&) const;
 	virtual bool canBeBuiltOver(BlockSource&, const BlockPos&) const;
-	virtual std::string& buildDescriptionName(const ItemInstance&) const;
+	virtual const std::string& buildDescriptionName(const ItemInstance&) const;
 	virtual void triggerEvent(BlockSource&, const BlockPos&, int, int);
 	virtual TextureUVCoordinateSet getTextureNum(int);
 	virtual void getMobToSpawn(BlockSource&, const BlockPos&) const;

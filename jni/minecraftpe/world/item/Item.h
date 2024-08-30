@@ -18,6 +18,27 @@ namespace Json {
 
 class Item {
 public:
+    //expand Tier class
+	class Tier
+	{
+	public:
+		static Tier DIAMOND;
+		static Tier GOLD;
+		static Tier IRON;
+		static Tier STONE;
+		static Tier WOOD;
+		
+		int harvestLevel;
+        int maxUses;
+        float efficiencyOnProperMaterial;
+        float damageVsEntity;
+		int enchantability;
+		
+		Tier(int a, int b, float c, float d, float e) : harvestLevel(a), maxUses(b), efficiencyOnProperMaterial(c), damageVsEntity(d), enchantability(e) {};
+		
+		ItemInstance* getTierItem();
+	};
+public:
 	unsigned char maxStackSize; // 4
 	std::string atlas; // 8
 	int idk; // 12
@@ -36,7 +57,7 @@ public:
 	bool isFood; // 56
 	Item* craftingRemainingItem; // 60
 
-	static Item* mItems[2048];
+	static Item* mItems[2048];//2048
 
 	Item(const std::string&, short);
 
@@ -68,14 +89,14 @@ public:
 	virtual bool isValidRepairItem(const ItemInstance&, const ItemInstance&);
 	virtual int getEnchantSlot() const;
 	virtual int getEnchantValue() const;
-	virtual bool use(ItemInstance&, Player&);
+	virtual ItemInstance& use(ItemInstance&, Player&);
 	virtual bool useOn(ItemInstance*, Player*, int, int, int, signed char, float, float, float);
 	virtual void useTimeDepleted(ItemInstance*, Level*, Player*);
 	virtual void releaseUsing(ItemInstance*, Player*, int);
 	virtual float getDestroySpeed(ItemInstance*, Block*);
 	virtual void hurtEnemy(ItemInstance*, Mob*, Mob*);
 	virtual void interactEnemy(ItemInstance*, Mob*, Player*);
-	virtual void mineBlock(ItemInstance*, BlockID, int, int, int, Mob*);
+	virtual bool mineBlock(ItemInstance*, BlockID, int, int, int, Mob*);
 	virtual const std::string& buildDescriptionName(const ItemInstance&) const;
 	virtual const std::string& buildEffectDescriptionName(const ItemInstance&) const;
 	virtual void readUserData(ItemInstance*, RakNet::BitStream*) const;
