@@ -5,7 +5,7 @@ FieryMetalBlock::FieryMetalBlock(std::string const& name, int id, Material const
   tex = getTextureUVCoordinateSet("fiery_block",0);
   this->setDestroyTime(5.0f);
   this->setExplodeable(10.0f);
-  this->setLightEmission(1.0f);
+ 
 }
 const TextureUVCoordinateSet& FieryMetalBlock::getTexture(signed char side)
 {

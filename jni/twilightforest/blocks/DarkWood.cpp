@@ -4,7 +4,7 @@ DarkWood::DarkWood(std::string const & name,int id):WoodBlock(name,id)
     this->creativeCategory = 1;
     this->setDestroyTime(5.0f);
     this->setSoundType(Block::SOUND_WOOD);
-    this->setLightEmission(1.0f);
+    
     
 
     top_tex = getTextureUVCoordinateSet("darkwood_top",0);

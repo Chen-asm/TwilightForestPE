@@ -1,6 +1,7 @@
 #include "TwilightBlocks.h"
 #include "minecraftpe/world/level/block/Block.h"
 #include "minecraftpe/world/item/BlockItem.h"
+#include "minecraftpe/world/item/AuxDataBlockItem.h"
 #include "minecraftpe/world/material/Material.h"
 #include "CanopyWood.h"
 #include "OakWood.h"
@@ -94,7 +95,7 @@ void TwilightBlocks::initBlocks() {
 }
 
 void TwilightBlocks::registerBlocks() {
-
+   
     registerBlock(canopyWood);
 	registerBlock(oakWood);
 	registerBlock(darkWood);
@@ -121,6 +122,8 @@ void TwilightBlocks::registerBlocks() {
 	registerBlock(rootsBlock);
 	registerBlock(liveRoots);
 	registerBlock(twilightOakLeaves);
+	
+	
 }
 void TwilightBlocks::registerBlock(Block* block) {
 	block->init();

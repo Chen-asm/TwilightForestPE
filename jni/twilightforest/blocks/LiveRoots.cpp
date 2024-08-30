@@ -5,7 +5,7 @@ LiveRoots::LiveRoots(std::string const& name, int id, Material const& material):
   tex = getTextureUVCoordinateSet("oreroots",0);
   this->setDestroyTime(5.0f);
   this->setExplodeable(10.0f);
-  this->setLightEmission(1.0f);
+  
 }
 const TextureUVCoordinateSet& LiveRoots::getTexture(signed char side)
 {

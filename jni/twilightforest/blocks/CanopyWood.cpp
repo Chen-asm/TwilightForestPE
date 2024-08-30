@@ -1,10 +1,11 @@
 #include "CanopyWood.h"
-CanopyWood::CanopyWood(std::string const & name,int id):WoodBlock(name,id)
+#include "minecraftpe/Locale/I18n.h"
+CanopyWood::CanopyWood(const std::string& name, int id):WoodBlock(name,id)
 {
     this->creativeCategory = 1;
     this->setDestroyTime(5.0f);
     this->setSoundType(Block::SOUND_WOOD);
-    this->setLightEmission(1.0f);
+   
     
 
     top_tex = getTextureUVCoordinateSet("canopy_top",0);
@@ -70,3 +71,4 @@ const TextureUVCoordinateSet& CanopyWood::getTexture(signed char side)
 
    }
 }
+

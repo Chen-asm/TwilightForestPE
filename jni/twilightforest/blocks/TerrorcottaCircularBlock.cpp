@@ -5,7 +5,7 @@ TerrorcottaCircularBlock::TerrorcottaCircularBlock(std::string const& name, int 
   tex = getTextureUVCoordinateSet("terrorcotta_a",0);
   this->setDestroyTime(5.0f);
   this->setExplodeable(10.0f);
-  this->setLightEmission(1.0f);
+  
 }
 const TextureUVCoordinateSet& TerrorcottaCircularBlock::getTexture(signed char side)
 {

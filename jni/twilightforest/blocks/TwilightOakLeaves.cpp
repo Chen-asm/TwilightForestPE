@@ -2,10 +2,10 @@
 TwilightOakLeaves::TwilightOakLeaves(std::string const& name, int id, Material const& material):Block(name,id,material)
 {
   this->creativeCategory = 1;
-  tex = getTextureUVCoordinateSet("leaves",0);
+  tex = getTextureUVCoordinateSet("leaves",1);
   this->setDestroyTime(5.0f);
   this->setExplodeable(10.0f);
-  this->setLightEmission(1.0f);
+  
 }
 const TextureUVCoordinateSet& TwilightOakLeaves::getTexture(signed char side)
 {

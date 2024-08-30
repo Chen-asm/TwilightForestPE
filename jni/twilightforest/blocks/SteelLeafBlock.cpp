@@ -5,7 +5,7 @@ SteelLeafBlock::SteelLeafBlock(std::string const& name, int id, Material const& 
   tex = getTextureUVCoordinateSet("steelleaf_block",0);
   this->setDestroyTime(5.0f);
   this->setExplodeable(10.0f);
-  this->setLightEmission(1.0f);
+  
 }
 const TextureUVCoordinateSet& SteelLeafBlock::getTexture(signed char side)
 {

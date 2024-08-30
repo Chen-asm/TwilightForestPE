@@ -1,14 +1,15 @@
 #include "TwilightForest.h"
 #include <cmath>
-TwilightForest::TwilightForest(Level& level):Dimension(level,DimensionId::NETHER)
+TwilightForest::TwilightForest(Level& level):Dimension(level,DimensionId::TWILIGHTFOREST)
 {
-    this->id = DimensionId::TWILIGHTFOREST;
+    
 }
 void TwilightForest::init()
 {
     Dimension::init();
-    setUltraWarm(true);
     setCeiling(true);
+    setUltraWarm(true);
+    
 }
 void TwilightForest::tick()
 {}
@@ -24,9 +25,9 @@ float TwilightForest::getTimeOfDay(int,float)const
 
 float TwilightForest::getCloudHeight()const
 {
-    return 64;
+    return 9.0f;
 }
-Color TwilightForest::getFogColor(float multiplier) const
+Color TwilightForest::getFogColor(float) const
 {
 
     return Color::GREEN;
