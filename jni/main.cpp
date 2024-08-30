@@ -20,6 +20,13 @@
 #include "minecraftpe/world/level/gen/RandomLevelSource.h"
 #include "minecraftpe/world/level/gen/FlatLevelSource.h"
 #include "minecraftpe/world/level/gen/HellRandomLevelSource.h"
+#include "twilightforest/items/IronWoodPickaxe.h"
+#include "twilightforest/items/IronWoodAxe.h"
+#include "twilightforest/items/IronWoodShovel.h"
+#include "twilightforest/items/SteeleafPickaxe.h"
+#include "twilightforest/items/KnightlyPickaxe.h"
+#include "twilightforest/items/MazeBreakerPickaxe.h"
+
 #include "twilightforest/items/TwilightArcticFur.h"
 #include "twilightforest/items/TwilightFeather.h"
 #include "twilightforest/items/TwilightIronWoodIngot.h"
@@ -28,7 +35,7 @@
 #include "minecraftpe/world/level/GeneratorType.h"
 #include "twilightforest/blocks/TwilightBlocks.h"
 #include "twilightforest/creative/CreativeManager.h"
-#include "twilightforest/level/chunk/TwilightRandomLevelSource.h"
+//#include "twilightforest/level/chunk/TwilightRandomLevelSource.h"
 #include "minecraftpe/client/renderer/renderer/LevelRenderer.h"
 #include "minecraftpe/client/renderer/Tessellator.h"
 #include "minecraftpe/client/renderer/renderer/Mesh.h"
@@ -52,7 +59,7 @@ static void initBiomes_Hook(void)
  std::unique_ptr<Dimension> (*createNewDimension_Real)(DimensionId,Level&);
  std::unique_ptr<Dimension> createNewDimension_Hook(DimensionId dimensionId,Level& level)
 {
-	
+	/*
 	if(dimensionId == DimensionId::NETHER)
 	{ //nether：there is a bug 
 		return std::unique_ptr<Dimension>(new TwilightForest(level));
@@ -61,13 +68,13 @@ static void initBiomes_Hook(void)
 	{
         return std::unique_ptr<Dimension>(new NormalDimension(level));
 	}
-	
-	//return createNewDimension_Real(dimensionId,level);
+	*/
+	return createNewDimension_Real(dimensionId,level);
 }
 static std::unique_ptr<ChunkSource> (*createGenerator_Real)(Dimension*,GeneratorType);
 static std::unique_ptr<ChunkSource> createGenerator_Hook(Dimension* self,GeneratorType type)
 {
-	
+	/*
 	if(type == GeneratorType::HELL)
 	{//hell
 		return std::unique_ptr<ChunkSource>(new TwilightRandomLevelSource(&self->level, self, self->level.getSeed()));
@@ -85,8 +92,9 @@ static std::unique_ptr<ChunkSource> createGenerator_Hook(Dimension* self,Generat
 	{//there is also a bug to load generator
 		return std::unique_ptr<ChunkSource>(new FlatLevelSource(&self->level, self, FlatLevelSource::DEFAULT_LAYERS));
 	}
+	*/
 	
-	//return createGenerator_Real(self,type);
+	return createGenerator_Real(self,type);
 }
 
 
@@ -103,7 +111,14 @@ void initItems_Hook(void)
        Item::mItems[720] = new IronWoodIngot("ironwood_ingot",720 - 0x100);
        Item::mItems[721] = new ArcticFur("arctic_fur",721 - 0x100);
        Item::mItems[722] = new Feather("tffeather",722 - 0x100);
-       initItems_Real();
+       Item::mItems[723] = new IronWoodPickaxe("ironwoodpickaxe",723 - 0x100,Item::Tier::IRON);
+	   //Item::mItems[724] = new IronWoodAxe("ironwoodaxe",724 - 0x100);
+	   //Item::mItems[724] = new IronWoodShovel("ironwoodshovel",724 - 0x100,Item::Tier::IRON);
+	   Item::mItems[724] = new SteeleafPickaxe("steeleafpickaxe",724 - 0x100,Item::Tier::IRON);
+	   Item::mItems[725] = new KnightlyPickaxe("knightlypickaxe",725 - 0x100,Item::Tier::STONE);
+	   Item::mItems[726] = new MazeBreakerPickaxe("mazebreakerpickaxe",726 - 0x100,Item::Tier::STONE);
+	   
+	   initItems_Real();
     
 }
 void (*initCreativeItems_Real)();
@@ -114,6 +129,9 @@ void initCreativeItems_Hook() {
     Item::addCreativeItem(720,0);
     Item::addCreativeItem(721,0);
     Item::addCreativeItem(722,0);
+	Item::addCreativeItem(723,0);
+	Item::addCreativeItem(724,0);
+	//Item::addCreativeItem(725,0);
 }
 
 
